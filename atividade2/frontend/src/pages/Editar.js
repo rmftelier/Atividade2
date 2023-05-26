@@ -1,35 +1,31 @@
 import React, { useState } from 'react';
 import { Box, Center, Heading, FormControl, FormLabel, Input, Button } from '@chakra-ui/react';
 import api from '../services/api'
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 
-export default function CadastroCarteira() {
-     const navigate = useNavigate();
+export default function EditarCarteira() {
 
+    const navigate = useNavigate();
+    const { id } = useParams();
 
     //Cadastro Nome, Saldo, ID da Moeda
     const [nome, setNome] = useState('');
-    const [saldo, setSaldo] = useState('');
-    const [moedaId, setMoedaId] = useState('');
-  
+
+    //Tenho que manter o saldo, como manterei o saldo?
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const response = await api.post("/api/Carteiras", {
-          nome: nome,
-          saldo: parseFloat(saldo),
-          moedaId: parseInt(moedaId)
+        const response = await api.put(`/api/Carteiras/${id}`, {
+          id: id,
+          nome: nome
         });
 
         // Aqui você pode tratar a resposta se necessário
         console.log(response.data);
-
         
         // Limpar os campos do formulário
         setNome('');
-        setSaldo('');
-        setMoedaId('');
 
         // Redirecionar para a página Home
         return navigate('/', {replace: true});
@@ -47,22 +43,14 @@ export default function CadastroCarteira() {
     return (
       <Center h="100vh">
         <Box p={4}>
-          <Heading as="h1" mb={4} textAlign="center">Cadastro da Carteira</Heading>
+          <Heading as="h1" mb={4} textAlign="center">Edição da Carteira</Heading>
           <form onSubmit={handleSubmit}>
             <FormControl mb={4}>
-              <FormLabel>Nome da Carteira</FormLabel>
+              <FormLabel>Novo nome da Carteira</FormLabel>
               <Input type="text" value={nome} onChange={(e) => setNome(e.target.value)} />
             </FormControl>
-            <FormControl mb={4}>
-              <FormLabel>Saldo</FormLabel>
-              <Input type="number" value={saldo} onChange={(e) => setSaldo(e.target.value)} />
-            </FormControl>
-            <FormControl mb={4}>
-              <FormLabel>ID da Moeda</FormLabel>
-              <Input type="number" value={moedaId} onChange={(e) => setMoedaId(e.target.value)} />
-            </FormControl>
             <Button colorScheme="teal" type="submit" >
-              Cadastrar
+              Atualizar
             </Button>
             <Button colorScheme="teal" variant='outline' 
               onClick={handleGoBack}

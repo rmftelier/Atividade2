@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Button, Card, Center, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Box, Button, Stack, Card, Center, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 import api from '../services/api';
 
-import Cadastro from './Cadastro'
 
 export default function Home(){
     const [carteiras, setCarteiras] = useState([]);
 
-    const [mostrarCadastro, setMostrarCadastro] = useState(false);
 
     const fetchCarteiras = async() => {
           const response = await api.get("/api/Carteiras");
@@ -20,26 +18,7 @@ export default function Home(){
         fetchCarteiras()
     }, []);
 
-   
-    //Adicionando a Carteira
-    const addCarteira = async(nome, saldo, moedaId) => {
-
-        try {
-           const response = await api.post("/api/Carteiras", {
-              nome: nome,
-              saldo: parseFloat(saldo),
-              moedaId: parseInt(moedaId)
-           });
-
-           setCarteiras(prevCarteiras => [response.data, ...prevCarteiras]);
-           setMostrarCadastro(false);
-
-        } catch(error){
-           console.log(error);
-        }
-    };
-
-   
+      
     //Excluir a carteira
     const excluirCarteira = async(id) =>{
         try{
@@ -63,20 +42,21 @@ export default function Home(){
           <Box p={4}>
             <Heading as="h1" mb={4} textAlign="center">CriptoCarteira</Heading>
 
-            <Button 
-                 mr={4}
-                 as={Link}
-                 to="/cadastro-carteira"
-            >  
-                    Cadastrar Carteira 
+            <Stack direction='row' alignItems='center'>
+              <Button 
+                  mr={4}
+                  as={Link}
+                  to="/cadastro-carteira"
+              >  
+                      Cadastrar Carteira 
+              </Button>
+              <Button 
+                  mr={4}
+                  as={Link}
+              >  
+                      Transferência entre Carteiras
             </Button>
-            <Button 
-                 mr={4}
-                 as={Link}
-            >  
-                    Transferência entre Carteiras
-            </Button>
-            {mostrarCadastro && <Cadastro addCarteira={addCarteira} />}
+            </Stack>
 
             <Box mt={4}>
               <Heading as="h2" size="lg" mb={2} >Carteiras</Heading>
@@ -89,13 +69,18 @@ export default function Home(){
                     </Heading>
                     <Divider />
                     <Box mb={2}>Saldo: {carteira.saldo}</Box>
+
                     {/* Tem que ver isso daqui como retornar*/}
                     <Box mb={4}>Moeda: {carteira.moedaId.nome}</Box>
+                    
+                    
                     <Box display="flex" alignItems="center">
                       <Button 
                           variant="solid" 
                           colorScheme="teal" 
                           mr={2}
+                          as={Link}
+                          to={`/editar/${carteira.id}`}
                       >
                           Editar
                       </Button>
