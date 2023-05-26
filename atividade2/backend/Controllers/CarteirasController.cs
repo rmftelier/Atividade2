@@ -29,8 +29,8 @@ namespace atividade2.Controllers
               return NotFound();
           }
 
-            var carteiras = await _context.Carteiras.Include(c => c.Moeda).ToListAsync();
-
+            //var carteiras = await _context.Carteiras.Include(c => c.Moeda).ToListAsync();
+            var carteiras = await _context.Carteiras.ToListAsync();
 
             return carteiras;
         }
@@ -44,8 +44,8 @@ namespace atividade2.Controllers
                   return NotFound();
             }
 
-            var carteira = await _context.Carteiras.Include(c => c.Moeda).FirstOrDefaultAsync(c => c.Id == id);
-
+            //var carteira = await _context.Carteiras.Include(c => c.Moeda).FirstOrDefaultAsync(c => c.Id == id);
+            var carteira = await _context.Carteiras.FindAsync(id);
 
             if (carteira == null)
             {
@@ -102,7 +102,7 @@ namespace atividade2.Controllers
             }
 
             //Vincular a moeda existente à carteira
-            carteira.Moeda = moeda; 
+            //carteira.Moeda = moeda; 
 
             _context.Carteiras.Add(carteira);
             await _context.SaveChangesAsync();

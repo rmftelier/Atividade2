@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import CadastroCarteira from './pages/Cadastro'
+import Cadastro from './pages/Cadastro'
 
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route 
             path="/cadastro-carteira" 
-            element={<CadastroCarteira />}
+            element={<Cadastro />}
         />
 
       </Routes>

@@ -17,7 +17,7 @@ namespace atividade2.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Carteira>()
-                .HasOne(c => c.Moeda)
+                .HasOne<Moeda>()
                 .WithMany()
                 .HasForeignKey(c => c.MoedaId)
                 .IsRequired();
