@@ -1,7 +1,6 @@
 
 using atividade2.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace atividade2
 {
@@ -11,22 +10,14 @@ namespace atividade2
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
 
             //Registrando o DbContext no nosso projeto 
             builder.Services.AddDbContext<CarteiraContext>(opt =>
                opt.UseInMemoryDatabase("CarteiraDB"));
 
-           // builder.Services.AddDbContext<MoedaContext>(opt =>
-            //   opt.UseInMemoryDatabase("MoedaDB"));
-
-
-           // builder.Services.AddDbContext<TransacaoContext>(opt =>
-           //    opt.UseInMemoryDatabase("TransacaoDB"));
 
 
             builder.Services.AddSwaggerGen();
@@ -43,15 +34,8 @@ namespace atividade2
             });
 
 
-
             var app = builder.Build();
 
-
-            // Inicializar os dados do contexto aqui
-            //using (var context = new MoedaContext())
-            //{
-            //  context.InicializarDados();
-            //}
 
             // Inicializar os dados do contexto aqui
             using (var scope = app.Services.CreateScope())
@@ -74,7 +58,7 @@ namespace atividade2
 
             }
 
-            // Configure the HTTP request pipeline.
+            // Configurar o pipeline da requisição HTTP
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -83,7 +67,6 @@ namespace atividade2
 
 
             //Configurar o pipeline de requisição HTTP
-
             app.UseRouting();
 
             app.UseAuthorization();

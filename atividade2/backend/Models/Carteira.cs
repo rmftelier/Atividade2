@@ -6,38 +6,21 @@
 
         public string Nome { get; set; }
 
-        public decimal Saldo { get; set; }
+        public float Saldo { get; set; }
 
         public int MoedaId { get; set; }
 
         public Moeda Moeda { get; set; }
 
-        //Criação da Carteira 
-        /* public Carteira()
-         {
-             Nome = ""
-             Saldo = 0;
-             MoedasDisponiveis = new List<Moeda>();
-             MoedaSelecionada = null;
-         }
 
-        
-        */
+        //Construtores
+        public Carteira() { }
 
-        public Carteira() { 
-        
-        
-        }
-
-        // Construtor com parâmetros
-        // Construtor com parâmetros
-        public Carteira(int id, string nome, decimal saldo, int moedaId, Moeda moeda)
+        public Carteira(string nome, float saldo, int moedaId)
         {
-            Id = id;
             Nome = nome;
             Saldo = saldo;
             MoedaId = moedaId;
-            Moeda = moeda;
         }
     }
 }

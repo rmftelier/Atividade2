@@ -46,7 +46,6 @@ namespace atividade2.Controllers
 
             var carteira = await _context.Carteiras.Include(c => c.Moeda).FirstOrDefaultAsync(c => c.Id == id);
 
-            //var carteira = await _context.Carteiras.FindAsync(id);
 
             if (carteira == null)
             {
@@ -57,7 +56,6 @@ namespace atividade2.Controllers
         }
 
         // PUT: api/Carteiras/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCarteira(int id, Carteira carteira)
         {
@@ -88,7 +86,6 @@ namespace atividade2.Controllers
         }
 
         // POST: api/Carteiras
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Carteira>> PostCarteira(Carteira carteira)
         {
@@ -114,9 +111,6 @@ namespace atividade2.Controllers
         }
 
 
-
-
-
         // DELETE: api/Carteiras/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCarteira(int id)
@@ -137,7 +131,12 @@ namespace atividade2.Controllers
             return NoContent();
         }
 
-        //Pegar infos da Moeda
+        private bool CarteiraExists(int id)
+        {
+            return (_context.Carteiras?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        //Informações das Moedas
         // GET: api/Carteiras/Moedas
         [HttpGet("Moedas")]
         public async Task<ActionResult<IEnumerable<Moeda>>> GetMoedas()
@@ -148,9 +147,6 @@ namespace atividade2.Controllers
 
 
 
-        private bool CarteiraExists(int id)
-        {
-            return (_context.Carteiras?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+
     }
 }

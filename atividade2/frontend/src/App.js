@@ -1,15 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Home';
-//import CarteiraCadastro from './components/CarteiraCadastro';
-//import Transferencia from './components/Transferencia';
-//<Route path="/carteira/cadastro" component={CarteiraCadastro} />
-//<Route path="/transferencia" component={Transferencia} />
+import Home from './pages/Home';
+import CadastroCarteira from './pages/Cadastro'
+
 
 const App = () => {
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route 
+            path="/cadastro-carteira" 
+            element={<CadastroCarteira />}
+        />
+
       </Routes>
     </Router>
   );

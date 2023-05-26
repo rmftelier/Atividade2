@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\MoedaContext.cs" />
     <Compile Remove="Models\Transacao.cs" />
     <Compile Remove="Models\TransacaoContext.cs" />
   </ItemGroup>
