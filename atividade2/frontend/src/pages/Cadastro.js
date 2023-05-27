@@ -3,10 +3,8 @@ import { Box, Center, Heading, FormControl, FormLabel, Input, Button } from '@ch
 import api from '../services/api'
 import { useNavigate } from 'react-router';
 
-
 export default function CadastroCarteira() {
-     const navigate = useNavigate();
-
+    const navigate = useNavigate();
 
     //Cadastro Nome, Saldo, ID da Moeda
     const [nome, setNome] = useState('');

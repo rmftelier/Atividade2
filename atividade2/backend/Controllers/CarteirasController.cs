@@ -111,9 +111,6 @@ namespace atividade2.Controllers
                 return BadRequest("A moeda fornecida não existe.");
             }
 
-            //Vincular a moeda existente à carteira
-            //carteira.Moeda = moeda; 
-
             _context.Carteiras.Add(carteira);
             await _context.SaveChangesAsync();
 

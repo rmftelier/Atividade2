@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import { Box, Button, Stack, Card, Center, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 import api from '../services/api';
 
-
 export default function Home(){
     const [carteiras, setCarteiras] = useState([]);
-
 
     const fetchCarteiras = async() => {
           const response = await api.get("/api/Carteiras");
@@ -32,17 +30,11 @@ export default function Home(){
         }
     };
 
-    //Editar a carteira
-
-   
-
-
     return(
         <Center h="100vh">
           <Box p={4}>
             <Heading as="h1" mb={4} textAlign="center">CriptoCarteira</Heading>
-
-            <Stack direction='row' alignItems='center'>
+            <Stack alignItems='center'>
               <Button 
                   mr={4}
                   as={Link}
@@ -50,14 +42,7 @@ export default function Home(){
               >  
                       Cadastrar Carteira 
               </Button>
-              <Button 
-                  mr={4}
-                  as={Link}
-              >  
-                      Transferência entre Carteiras
-            </Button>
             </Stack>
-
             <Box mt={4}>
               <Heading as="h2" size="lg" mb={2} >Carteiras</Heading>
               <SimpleGrid columns={2} spacing={4}>
@@ -68,12 +53,7 @@ export default function Home(){
                         {carteira.nome}
                     </Heading>
                     <Divider />
-                    <Box mb={2}>Saldo: {carteira.saldo}</Box>
-
-                    {/* Tem que ver isso daqui como retornar*/}
-                    <Box mb={4}>Moeda: {carteira.moedaId.nome}</Box>
-                    
-                    
+                    <Box mb={2}>Saldo: {carteira.saldo}</Box>       
                     <Box display="flex" alignItems="center">
                       <Button 
                           variant="solid" 
@@ -100,9 +80,4 @@ export default function Home(){
       </Center>
     );
 };
-
-
-
-
-   
 

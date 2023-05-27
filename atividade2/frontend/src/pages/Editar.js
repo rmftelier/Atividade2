@@ -12,7 +12,6 @@ export default function EditarCarteira() {
     //Cadastro Nome, Saldo, ID da Moeda
     const [nome, setNome] = useState('');
 
-    //Tenho que manter o saldo, como manterei o saldo?
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
