@@ -11089,19 +11089,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rfranca\\.nuget\\packages\\": {}
+    "C:\\Users\\Paulo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rfranca\\FACUL\\Atividade2\\atividade2\\backend\\atividade2.csproj",
+      "projectUniqueName": "C:\\Users\\Paulo\\Documents\\ProgramacaoDistribuida\\Atividade2\\atividade2\\backend\\atividade2.csproj",
       "projectName": "atividade2",
-      "projectPath": "C:\\Users\\rfranca\\FACUL\\Atividade2\\atividade2\\backend\\atividade2.csproj",
-      "packagesPath": "C:\\Users\\rfranca\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rfranca\\FACUL\\Atividade2\\atividade2\\backend\\obj\\",
+      "projectPath": "C:\\Users\\Paulo\\Documents\\ProgramacaoDistribuida\\Atividade2\\atividade2\\backend\\atividade2.csproj",
+      "packagesPath": "C:\\Users\\Paulo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Paulo\\Documents\\ProgramacaoDistribuida\\Atividade2\\atividade2\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rfranca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Paulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11173,7 +11173,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -10,9 +10,6 @@
 
         public int MoedaId { get; set; }
 
-        //public Moeda Moeda { get; set; }
-
-
         //Construtores
         public Carteira() { }
 

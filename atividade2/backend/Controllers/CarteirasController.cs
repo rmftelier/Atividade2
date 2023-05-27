@@ -64,7 +64,17 @@ namespace atividade2.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(carteira).State = EntityState.Modified;
+            // Buscar a carteira existente no banco de dados
+            var carteiraExistente = await _context.Carteiras.FindAsync(id);
+
+            if (carteiraExistente == null)
+            {
+                return NotFound();
+            }
+
+
+            // Atualizar apenas o nome da carteira
+            carteiraExistente.Nome = carteira.Nome;
 
             try
             {
